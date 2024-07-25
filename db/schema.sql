@@ -5,39 +5,34 @@ DROP DATABASE IF EXISTS ecommerce_db;
 CREATE DATABASE ecommerce_db;
 
 -- USE DATABASE
-USE ecommerce_db;
+\c ecommerce_db;
 
 -- Category Table
 CREATE TABLE category (
-  id INT NOT NULL AUTO_INCREMENT,
-  category_name VARCHAR(300) NOT NULL,
-  PRIMARY KEY (id)
+  id SERIAL PRIMARY KEY,
+  category_name VARCHAR(300) NOT NULL
 );
 
 -- Product Table
 CREATE TABLE product (
-    id INT NOT NULL AUTO_INCREMENT,
+    id SERIAL PRIMARY KEY,
     product_name VARCHAR(300) NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
     stock INT NOT NULL DEFAULT 10,
-    category_id INT,
-    PRIMARY KEY (id),
-    FOREIGN KEY (category_id) REFERENCES category(id)
-)
+    category_id INT REFERENCES category(id),
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
 
 -- Tag Table
 CREATE TABLE tag (
-    id INT NOT NULL AUTO_INCREMENT,
-    tag_name VARCHAR(300),
-    PRIMARY KEY (id)
-)
+    id SERIAL PRIMARY KEY,
+    tag_name VARCHAR(300)
+);
 
 -- ProductTag Table
 CREATE TABLE product_tag (
-    id INT NOT NULL AUTO_INCREMENT,
-    product_id INT,
-    tag_id INT,
-    PRIMARY KEY (id),
-    FOREIGN KEY (product_id) REFERENCES product(id),
-    FOREIGN KEY (tag_id) REFERENCES tag(id),
-)
+    id SERIAL PRIMARY KEY,
+    product_id INT REFERENCES product(id),
+    tag_id INT REFERENCES tag(id)
+);
