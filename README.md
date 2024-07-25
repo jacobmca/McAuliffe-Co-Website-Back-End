@@ -19,37 +19,33 @@ To install, please clone this repository to your computer using the following st
 4. Press enter.
 
 ## Description
-This is an node/SQL-based employee tracking program that creates a database tracking yor company's departments, roles and employees via a SQL database.
+This is the back-end of an e-commerce site for the (fictional) company "McAuliffe Co." This website uses node and sequelize to maintain a database of the products McAuliffe Co. sells online, with sub-tables based on category, product, and tag.
 
-Using inquirer terminal commands, the user is not only able to view the company's departments, roles, and employees, but also add departments, roles, and employees. You can also update an employee's role within the company.
+If a user utilizes Insomnia or a similar API client application, the user can add, update, or remove any categories, products, or tags of their choice.
 
 ## Usage
-First, ensure that the SQL database "company" is running by entering the following commands via the terminal:
+Enter the following commands via the terminal for server.js to ensure node is installed and your sql database is running:
 
+npm install
 psql -U postgres
 \i database/schema.sql
-\i database/seeds.sql
-\dt
+\q
+node seeds/index.js
+node server.js
 
-![Screenshot](assets/screenshots/screenshot1.png)
+Once you have confirmed the server is running, the user can navigate to Insomnia or a similar program to issue GET, POST, PUT, or DELETE commands so the user can view or update the database.
 
-Once you have confirmed the database is running, navigate to server.js in your terminal and enter "node server.js" to get the program running.
+![Screenshot](assets/screenshot1.png)
 
-In your terminal, a list of commands will appear that you can navigate to. To select, scrolling over the desired command and press "enter."
+GET commands can be entered to retrieve either lists of all or individual categories, products, and/or tags. Individual items can be gathered by ID.
 
-![Screenshot](assets/screenshots/screenshot1.png)
+POST commands can be entered to create new categories, products, and/or tags.
 
-If you select "Add a department," follow the prompt to enter the name for the new department you are adding to the database.
+PUT commands can be entered to update existing categories, products, and/or tags by ID.
 
-If you select "Add a role," follow the prompts to enter the name, salary, and department for the new role you are adding to the database.
+DELETE commands can be entered to remove existing categories, products, and/or tags by ID.
 
-If you select "Add an employee," follow the prompts to enter the first name, last name, department, and manager for the new employee you are adding to the database.
-
-If you select "Update an employee role," follow the prompts to select the employee and the employee's new role.
-
-To exit the program, select "Exit" in the main list of prompts.
-
-[Please see this video demo.](https://drive.google.com/file/d/1PP3oA2emudyxFvhaZHXWfPYuwG45HWFN/view?usp=sharing) If unable to view, you can also find the video in assets/videos/screenrecording1.mov.
+[Please see this video demo.](https://drive.google.com/file/d/1epV4G7HRRcVXjdrNl8SYaKI-G9-WnMLW/view?usp=drive_link) If unable to view, you can also find the video in assets/videos/screenrecording1.mov.
 
 ## Contributions
 When contributing to this repository, please reach out to me via e-mail to discuss the change you would like to make first. I am open to ideas both with regards to data stored in the tables and alterations to user interaction with the data.
@@ -61,7 +57,7 @@ This project is licensed under the MIT License. For more information, please see
 This program was created by Jacob McAuliffe for the UC Berkeley eDX Coding Boot Camp.
 
 ## Tests
-In the future, I would like to incorporate both more data within the tables, and further opportunities for user interaction with this data. Ideas for further data within the table include employment start date, list of any recognitions, vacation time available for the employee, annual bonus. Ideas for user interaction include being able to delete data from the tables, or extra data to create sub-tables within the database as needed.
+In the future, I would like to incorporate both more data within both the database and tables. There's opportunity to expand the tables into categories such as release date, items sold, or manufacturer. The tables themselves could also be expanded to include much of this new information, creating a more organized and user-friendly back-end experience.
 
 ## Questions
 If you have further questions, you can reach me at [mcauliffemedia@gmail.com](mailto:mcauliffemedia@gmail.com).
